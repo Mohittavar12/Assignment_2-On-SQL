@@ -33,11 +33,11 @@ select * from Products;
       c.Affordable if the price is less than 10,000.
 */ 
 SELECT pro_name,category,price,
-		CASE
-			WHEN price>=50000 Then 'Expensive'
-			WHEN price>=10000 AND price<=49999 Then 'Moderate'
-			ELSE 'Affordable'
-		END AS price_category
+    CASE
+	WHEN price>=50000 Then 'Expensive'
+	WHEN price>=10000 AND price<=49999 Then 'Moderate'
+	ELSE 'Affordable'
+    END AS price_category
 FROM products;
 
 /*Q.2 classify products based on quantity available 
