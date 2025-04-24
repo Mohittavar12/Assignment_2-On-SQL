@@ -1,3 +1,3 @@
 # Assignment_2-On-SQL
-CASE Function 
-COALESCE Function 
+# CASE Function and
+# COALESCE Function 
