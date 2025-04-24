@@ -1,4 +1,4 @@
-
+--CASE FUNCTION 
 -- create
 CREATE TABLE Products (
   pro_id int primary key,
@@ -66,3 +66,32 @@ SELECT pro_name,category,quantity,
         ELSE 'Acc-Item'
     END AS category_item
 FROM Products;
+
+
+--COALESCE FUNCTION 
+--Add Total_discount & discounted_price column 
+Alter table Products
+ADD column discount numeric(10,2),
+ADD column discount_price numeric(10,2);
+
+--Calculate discount on price except laptop & smartphone 
+update Products
+set discount = price*discount_rate/100
+where pro_name NOT IN ('Laptop','Smartphone');
+
+
+--Calculate discounted_price except laptop & smartphone 
+update Products
+set discount_price = price-discount
+where pro_name NOT IN ('Laptop','Smartphone');
+
+
+--fetch data from products table 
+select pro_name,price, discount_rate,discount_price
+FROM Products;
+
+--Merge discount_price & price column 
+SELECT pro_name,price,discount_rate,discount,
+    coalesce (discount_price,price) AS final_price
+FROM Products;
+
